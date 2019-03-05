@@ -10,7 +10,7 @@ Build with:
   * `docker build -t my/toolbox:latest`
   
 Run with:
-  * `docker run -p 8888:8888 -v d:\docker\toolbox\ext:/work/ext --rm my/toolbox`
+  * `docker run -p 127.0.0.1:8888:8888 -v d:\docker\toolbox\ext:/work/ext --rm my/toolbox`
   
 Notes:
   * When run with the volume (`-v`) switch, this binds the container path `/work/ext` to `d:\docker\toolbox\ext`, change the host path as needed.  This allows for saving any files out to the host filesystem by placing them in the "ext" folder.  This is useful for persistance of Jupyter Notebooks, results files, or anything which should survive the reinitialization of the container.  
