@@ -1,2 +1,2 @@
-# docker
-My Docker files
+# Docker
+A repository for useful Docker files.
