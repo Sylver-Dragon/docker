@@ -12,12 +12,13 @@ RUN python -m pip install olefile
 
 # install nmap
 RUN apt-get update && \
-    apt-get install nmap -y
+    apt-get install nmap -y && \
+    apt-get clean
 
 # Install jupyter
 RUN python -m pip install jupyter
 
 # start jupyter notebook server
 # start container with:
-#   docker run -p 8888:8888 --rm my/toolbox
+#   docker run -p 127.0.0.1:8888:8888 --rm my/toolbox
 CMD jupyter notebook --no-browser --allow-root --ip=0.0.0.0
