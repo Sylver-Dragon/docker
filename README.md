@@ -10,7 +10,7 @@ Contains:
   * CyberChef (https://gchq.github.io/CyberChef/)
   
 Build with:
-  * `docker build -t toolbox:latest`
+  * `docker build -t toolbox:latest d:\docker\toolbox -f d:\docker\toolbox\toolbox.dockerfile`
   
 Run with:
   * `docker run -p 127.0.0.1:8888:8888 -v d:\docker\toolbox\ext:/work/ext --rm toolbox`
