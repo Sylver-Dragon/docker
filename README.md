@@ -2,8 +2,8 @@
 A repository for useful Docker files.
 
 ## toolbox
-Contains Dider Steven's suite:
-  * https://blog.didierstevens.com/didier-stevens-suite/
+Contains:
+  * Dider Steven's suite (https://blog.didierstevens.com/didier-stevens-suite/)
   * nmap
   * WhatWaf (https://github.com/Ekultek/WhatWaf)
   * WES-NG (https://github.com/bitsadmin/wesng)
