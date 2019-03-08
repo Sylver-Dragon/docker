@@ -1,5 +1,7 @@
 #build with:
 #  docker build -t toolbox:latest <path> -f <path>\toolbox.dockerfile
+# start container with:
+#   docker run -p 127.0.0.1:8888:8888 -v <path>\ext:/work/ext --rm toolbox
 FROM python:2.7.15-stretch
 
 WORKDIR /work
@@ -32,6 +34,4 @@ RUN python -m pip install jupyter
 RUN apt-get clean
 
 # start jupyter notebook server
-# start container with:
-#   docker run -p 8888:8888 -v <path>\ext:/work/ext --rm toolbox
 CMD jupyter notebook --no-browser --allow-root --ip=0.0.0.0
