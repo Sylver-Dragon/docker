@@ -7,6 +7,7 @@ Contains Dider Steven's suite:
   * nmap
   * WhatWaf (https://github.com/Ekultek/WhatWaf)
   * WES-NG (https://github.com/bitsadmin/wesng)
+  * CyberChef (https://gchq.github.io/CyberChef/)
   
 Build with:
   * `docker build -t toolbox:latest`
