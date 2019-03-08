@@ -10,7 +10,8 @@ WORKDIR /work
 EXPOSE 8888/tcp
 
 # Get DidierStevensSuite
-RUN git clone https://github.com/DidierStevens/DidierStevensSuite.git suite
+RUN git clone https://github.com/DidierStevens/DidierStevensSuite.git suite && \
+    chmod +x /work/suite/*.py
 RUN python -m pip install olefile
 
 # install nmap
