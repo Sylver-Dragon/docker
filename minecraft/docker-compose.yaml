@@ -1,0 +1,17 @@
+version: "3.2"
+
+services:
+  minecraft:
+    ports:
+      - target: 19132
+        published: 19132
+        protocol: udp
+        mode: host
+    image: sylver-dragon/minecraft:1.17
+    volumes:
+      - /zstor/docker/minecraft/server.properties:/home/server.properties
+      - /zstor/docker/minecraft/worlds:/home/worlds
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 1s
