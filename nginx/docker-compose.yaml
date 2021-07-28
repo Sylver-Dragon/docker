@@ -1,0 +1,81 @@
+version: '3.3'
+services:
+  nginx:
+    image: nginx:latest
+    environment:
+      TZ: America/New_York
+    ports:
+     - 80:80
+     - 443:443
+    volumes:
+     - /var/log/nginx/:/var/log/nginx/
+     - /zstor/docker/nginx/conf.d/nginx_conf.d_deny.conf:/etc/nginx/conf.d/deny.conf
+    networks:
+     - swarm_internal
+    secrets:
+     -
+      source: nginx_ssl_cert
+      target: /etc/nginx/ssl/cert.pem
+     -
+      source: nginx_ssl_key
+      target: /etc/nginx/ssl/privkey.pem
+    configs:
+     -
+      source: nginx_mime.types
+      target: /etc/nginx/conf/mime.types
+     -
+      source: nginx_nginx.conf
+      target: /etc/nginx/nginx.conf
+     -
+      source: nginx_conf.d_default.conf
+      target: /etc/nginx/conf.d/default.conf
+     -
+      source: nginx_conf_logformat.conf
+      target: /etc/nginx/conf/logformat.conf
+     -
+      source: nginx_conf.d_pihole
+      target: /etc/nginx/conf.d/pihole.conf
+     -
+      source: nginx_conf.d_swarm.conf
+      target: /etc/nginx/conf.d/swarm.conf
+     -
+      source: nginx_conf.d_splunk.conf
+      target: /etc/nginx/conf.d/splunk.conf
+     -
+      source: nginx_conf.d_nextcloud.conf
+      target: /etc/nginx/conf.d/nextcloud.conf
+     -
+      source: nginx_conf.d_wordpress.conf
+      target: /etc/nginx/conf.d/wordpress.conf
+    logging:
+      driver: json-file
+    deploy:
+      restart_policy:
+        delay: 1s
+networks:
+  swarm_internal:
+    external: true
+configs:
+  nginx_conf.d_default.conf:
+    external: true
+  nginx_conf.d_nextcloud.conf:
+    external: true
+  nginx_conf.d_pihole:
+    external: true
+  nginx_conf.d_splunk.conf:
+    external: true
+  nginx_conf.d_swarm.conf:
+    external: true
+  nginx_conf.d_wordpress.conf:
+    external: true
+  nginx_conf_logformat.conf:
+    external: true
+  nginx_mime.types:
+    external: true
+  nginx_nginx.conf:
+    external: true
+secrets:
+  nginx_ssl_cert:
+    external: true
+  nginx_ssl_key:
+    external: true
