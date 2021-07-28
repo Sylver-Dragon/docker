@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+  nextcloud:
+    image: nextcloud:latest
+    environment:
+      TZ: America/New_York
+    volumes:
+     - /var/log/nextcloud:/var/log/nextcloud
+     - nextcloud_nextcloud:/var/www/html
+     - nextcloud_nextcloud_apps:/var/www/html/custom_apps
+     - nextcloud_nextcloud_config:/var/www/html/config
+     - nextcloud_nextcloud_data:/var/www/html/data
+    networks:
+     - swarm_internal
+    logging:
+      driver: json-file
+    deploy:
+      restart_policy:
+        delay: 1s
+networks:
+  swarm_internal:
+    external: true
+volumes:
+  nextcloud_nextcloud:
+    external: true
+  nextcloud_nextcloud_apps:
+    external: true
+  nextcloud_nextcloud_config:
+    external: true
+  nextcloud_nextcloud_data:
+    external: true
