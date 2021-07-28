@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  enterprise:
+    image: splunk/splunk:latest
+    environment:
+      SPLUNK_PASSWORD: REMOVED
+      SPLUNK_START_ARGS: --accept-license
+    ports:
+     - 9997:9997
+     - 514:5514/udp
+    volumes:
+     - /zstor/docker/splunk/splunk-launch.conf:/opt/splunk/etc/splunk-launch.conf
+     - splunk_etc:/opt/splunk/etc
+     - splunk_var:/opt/splunk/var
+    networks:
+     - swarm_internal
+    logging:
+      driver: json-file
+    deploy:
+      restart_policy:
+        delay: 1s
+networks:
+  swarm_internal:
+    external: true
+volumes:
+  splunk_etc:
+    external: true
+  splunk_var:
+    external: true
