@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_PASSWORD: REMOVED
+      MYSQL_ROOT_PASSWORD: REMOVED
+      MYSQL_USER: REMOVED
+    volumes:
+     - db_data:/var/lib/mysql
+    networks:
+     - swarm_internal
+    logging:
+      driver: json-file
+  wordpress:
+    image: wordpress:latest
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: REMOVED
+      WORDPRESS_DB_USER: REMOVED
+    volumes:
+     - wordpress_data:/var/www/html
+    networks:
+     - swarm_internal
+    logging:
+      driver: json-file
+networks:
+  swarm_internal:
+    external: true
+volumes:
+  db_data:
+    driver: local
+  wordpress_data:
+    driver: local
