@@ -1,0 +1,1 @@
+This setup assumes that you have a folder setup to hold the worlds in `/zstor/docker/minecraft/worlds`.  This should be changed in the `docker-compose.yaml` to point to wherever you want to store the worlds on your file system.
