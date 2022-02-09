@@ -23,9 +23,6 @@ ENV ServerPass="ValheimPass"
 # Public option - (Required) Set server public
 ENV Public=0
 
-# Update Steam Manually
-COPY --chown=steam:steam ./package/* /home/steam/steamcmd/package/
-
 # Download Valheim server from Steam
 RUN /home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/steam/valheimserver +app_update 896660 validate +quit
 
