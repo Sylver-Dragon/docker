@@ -1,0 +1,26 @@
+ersion: "3.2"
+
+services:
+  valheim:
+    image: sylver-dragon/valheimserver:latest
+    ports:
+      - target: 2456
+        published: 2456
+        protocol: udp
+        mode: host
+      - target: 2457
+        published: 2457
+        protocol: udp
+        mode: host
+      - target: 2458
+        published: 2458
+        protocol: udp
+        mode: host
+    environment:
+      TZ: 'America/New_York' 
+      ServerName: 'My Server'
+      WorldName: 'My World'
+      ServerPass: 'changeme'
+      Public: 0
+    volumes:
+      - /data/valheim/config:/home/steam/.config
